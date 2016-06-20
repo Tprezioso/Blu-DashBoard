@@ -48,11 +48,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
         view.sendSubview(toBack: webView)
         
         webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
-        
         UserDefaults.standard().addObserver(self, forKeyPath: "deviceToken", options: .new, context: nil)
     }
     
-    func userContentController(_ userContentController: WKUserContentController!, didReceive message: WKScriptMessage!) {
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
 //        if (message.name == "callbackHandler") {
 //            if (message.body as! String == "statusbar") {
 //                UIApplication.shared().statusBarStyle = .default
@@ -64,8 +63,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
                     
                     }, completion: nil)
 //            }
-
-  //      }
+//        }
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey: AnyObject]?, context: UnsafeMutablePointer<Void>?) {
@@ -78,7 +76,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
         }
     }
     
-    func webView(_ webView: WKWebView!, didFinish navigation: WKNavigation!) {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         let deviceToken = UserDefaults.standard().string(forKey: "deviceToken")
         
         if deviceToken != nil {
@@ -105,8 +103,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
             print("error")
             print(error)
             }
-            
         })
     }
-    
 }
