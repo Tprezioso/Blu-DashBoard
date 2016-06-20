@@ -9,16 +9,17 @@
 #import "TestConnection.h"
 
 
+
 @interface TestConnection ()
 
 @property (strong, nonatomic) NSURLRequest *urlRequest;
-@property (strong, nonatomic) UIWebView *webView;
+@property (strong, nonatomic) WKWebView *webView;
 
 @end
 
 @implementation TestConnection
 
-- (instancetype)initWithUrlRequest:(NSURLRequest *)urlRequest forWebView:(UIWebView *)webView
+- (instancetype)initWithUrlRequest:(NSURLRequest *)urlRequest forWebView:(WKWebView *)webView
 {
     self = [super init];
     if (self) {
@@ -65,9 +66,11 @@
     
     [alertController addAction:okAction];
     
-    UIViewController *viewC = (UIViewController *)self.webView.delegate;
+    UIViewController *viewC = (UIViewController *)self.webView.UIDelegate;
+    
     
     [viewC presentViewController:alertController animated:YES completion:nil];
 }
+
 
 @end

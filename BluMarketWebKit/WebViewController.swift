@@ -90,7 +90,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
         let url = URL(string: "https://dashboard.theblumarket.com")
         webView.load(URLRequest(url: url!))
         UIApplication.shared().statusBarStyle = .lightContent
-        let testConnection = TestConnection(NSURLRequest: url,UIWebView: webView)
+        let testConnection = TestConnection.init(urlRequest:URLRequest(url: url!) , for: webView)
+        testConnection?.testConnection()
         
     }
     

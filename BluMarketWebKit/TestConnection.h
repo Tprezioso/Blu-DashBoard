@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <WebKit/WebKit.h>
 
-@interface TestConnection : NSObject<NSURLConnectionDelegate>
+@interface TestConnection : NSObject <NSURLConnectionDelegate>
 
-- (instancetype)initWithUrlRequest:(NSURLRequest *)urlRequest forWebView:(UIWebView *)webView;
+- (instancetype)initWithUrlRequest:(NSURLRequest *)urlRequest forWebView:(WKWebView *)webView;
 - (void)testConnection;
++ (void)testConnection:(NSURLRequest *)urlRequest forWebView:(UIWebView *)webview;
+
 
 @end
