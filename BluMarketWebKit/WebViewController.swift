@@ -11,39 +11,33 @@ import SystemConfiguration
 
 class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHandler {
     
-            var webView: WKWebView!
-            var webViewConfiguration: WKWebViewConfiguration!
-            var contentController: WKUserContentController!
-            var previousReachabilityStatus: UInt32!
-            var reachabilityAlert: UIAlertController!
+    var webView: WKWebView!
+    var webViewConfiguration: WKWebViewConfiguration!
+    var contentController: WKUserContentController!
+    var previousReachabilityStatus: UInt32!
+    var reachabilityAlert: UIAlertController!
             
-            @IBOutlet var progressView: UIProgressView!
-            @IBOutlet var loadingView: UIView!
+    @IBOutlet var progressView: UIProgressView!
+    @IBOutlet var loadingView: UIView!
             
-            override func loadView() {
-                super.loadView()
+    override func loadView() {
+        super.loadView()
+        self.previousReachabilityStatus = 2
+        let host = "8.8.8.8"
+        var context = SCNetworkReachabilityContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
+        context.info = UnsafeMutablePointer(Unmanaged.passUnretained(self).toOpaque())
+        let reachability = SCNetworkReachabilityCreateWithName(nil, host)!
+        SCNetworkReachabilitySetCallback(reachability,
+                                            {(_, flags, info) in
+                                            let mySelf = Unmanaged<ViewController>.fromOpaque(COpaquePointer(info)).takeUnretainedValue()
+                                            mySelf.handleReachabilityChange(flags.rawValue)
+                                            },
+                                               &context)
+        SCNetworkReachabilityScheduleWithRunLoop(reachability, CFRunLoopGetMain(), kCFRunLoopCommonModes)
                 
-                self.previousReachabilityStatus = 2
+        NSUserDefaults.standardUserDefaults().registerDefaults(["UserAgent": "BLU App"])
                 
-                let host = "8.8.8.8"
-                var context = SCNetworkReachabilityContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
-                context.info = UnsafeMutablePointer(Unmanaged.passUnretained(self).toOpaque())
-                
-                let reachability = SCNetworkReachabilityCreateWithName(nil, host)!
-                
-                SCNetworkReachabilitySetCallback(reachability,
-                                                 {(_, flags, info) in
-                                                    let mySelf = Unmanaged<ViewController>.fromOpaque(COpaquePointer(info)).takeUnretainedValue()
-                                                    mySelf.handleReachabilityChange(flags.rawValue)
-                    },
-                                                 &context
-                )
-                
-                SCNetworkReachabilityScheduleWithRunLoop(reachability, CFRunLoopGetMain(), kCFRunLoopCommonModes)
-                
-                NSUserDefaults.standardUserDefaults().registerDefaults(["UserAgent": "BLU App"])
-                
-                contentController = WKUserContentController()
+        contentController = WKUserContentController()
                 
                 let userScript = WKUserScript(
                     source: "",

@@ -15,6 +15,7 @@
 		9F0527161D19869F00F41CA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F0527151D19869F00F41CA6 /* Main.storyboard */; };
 		9F0527181D19894A00F41CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F0527171D19894A00F41CA6 /* Assets.xcassets */; };
 		9F05271A1D198E3C00F41CA6 /* app icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F0527191D198E3C00F41CA6 /* app icon.png */; };
+		9F05271E1D19AD1700F41CA6 /* chaching.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9F05271D1D19AD1700F41CA6 /* chaching.wav */; };
 		9F1F68CB1D185113007CCFE8 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1F68CA1D185113007CCFE8 /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,9 @@
 		9F0527151D19869F00F41CA6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		9F0527171D19894A00F41CA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F0527191D198E3C00F41CA6 /* app icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app icon.png"; sourceTree = "<group>"; };
+		9F05271B1D19ACC800F41CA6 /* coins.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = coins.m4r; sourceTree = "<group>"; };
+		9F05271C1D19ACC800F41CA6 /* exclamation.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = exclamation.m4r; sourceTree = "<group>"; };
+		9F05271D1D19AD1700F41CA6 /* chaching.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = chaching.wav; sourceTree = "<group>"; };
 		9F1F68CA1D185113007CCFE8 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +111,7 @@
 				9F0132201D1830B000807F00 /* LaunchScreen.storyboard */,
 				9F0527171D19894A00F41CA6 /* Assets.xcassets */,
 				9F0132231D1830B000807F00 /* Info.plist */,
+				9F05271F1D19AD2100F41CA6 /* Sounds */,
 				9F0527191D198E3C00F41CA6 /* app icon.png */,
 				9F01321B1D1830B000807F00 /* BluMarketWebKit.xcdatamodeld */,
 			);
@@ -129,6 +134,16 @@
 				9F0132391D1830B000807F00 /* Info.plist */,
 			);
 			path = BluMarketWebKitUITests;
+			sourceTree = "<group>";
+		};
+		9F05271F1D19AD2100F41CA6 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				9F05271B1D19ACC800F41CA6 /* coins.m4r */,
+				9F05271C1D19ACC800F41CA6 /* exclamation.m4r */,
+				9F05271D1D19AD1700F41CA6 /* chaching.wav */,
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,7 +214,13 @@
 				TargetAttributes = {
 					9F0132101D1830B000807F00 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 6JBM5ZNF6C;
 						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					9F0132271D1830B000807F00 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -238,6 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F05271E1D19AD1700F41CA6 /* chaching.wav in Resources */,
 				9F0527161D19869F00F41CA6 /* Main.storyboard in Resources */,
 				9F05271A1D198E3C00F41CA6 /* app icon.png in Resources */,
 				9F0527181D19894A00F41CA6 /* Assets.xcassets in Resources */,
