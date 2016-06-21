@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		9F0132151D1830B000807F00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0132141D1830B000807F00 /* AppDelegate.swift */; };
 		9F01321D1D1830B000807F00 /* BluMarketWebKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F01321B1D1830B000807F00 /* BluMarketWebKit.xcdatamodeld */; };
-		9F01321F1D1830B000807F00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F01321E1D1830B000807F00 /* Assets.xcassets */; };
 		9F0132221D1830B000807F00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F0132201D1830B000807F00 /* LaunchScreen.storyboard */; };
 		9F01322D1D1830B000807F00 /* BluMarketWebKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F01322C1D1830B000807F00 /* BluMarketWebKitTests.swift */; };
 		9F0132381D1830B000807F00 /* BluMarketWebKitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0132371D1830B000807F00 /* BluMarketWebKitUITests.swift */; };
 		9F0527161D19869F00F41CA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F0527151D19869F00F41CA6 /* Main.storyboard */; };
+		9F0527181D19894A00F41CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F0527171D19894A00F41CA6 /* Assets.xcassets */; };
 		9F1F68CB1D185113007CCFE8 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1F68CA1D185113007CCFE8 /* WebViewController.swift */; };
 		9F8D1B571D187E2000BE45DC /* TestConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8D1B561D187E2000BE45DC /* TestConnection.m */; };
 /* End PBXBuildFile section */
@@ -39,7 +39,6 @@
 		9F0132111D1830B000807F00 /* BluMarketWebKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluMarketWebKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F0132141D1830B000807F00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F01321C1D1830B000807F00 /* BluMarketWebKit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BluMarketWebKit.xcdatamodel; sourceTree = "<group>"; };
-		9F01321E1D1830B000807F00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F0132211D1830B000807F00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F0132231D1830B000807F00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F0132281D1830B000807F00 /* BluMarketWebKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BluMarketWebKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +48,7 @@
 		9F0132371D1830B000807F00 /* BluMarketWebKitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluMarketWebKitUITests.swift; sourceTree = "<group>"; };
 		9F0132391D1830B000807F00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F0527151D19869F00F41CA6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		9F0527171D19894A00F41CA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F1F68CA1D185113007CCFE8 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		9F8D1B541D187E2000BE45DC /* BluMarketWebKit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BluMarketWebKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		9F8D1B551D187E2000BE45DC /* TestConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestConnection.h; sourceTree = "<group>"; };
@@ -108,8 +108,8 @@
 				9F8D1B551D187E2000BE45DC /* TestConnection.h */,
 				9F8D1B561D187E2000BE45DC /* TestConnection.m */,
 				9F0527151D19869F00F41CA6 /* Main.storyboard */,
-				9F01321E1D1830B000807F00 /* Assets.xcassets */,
 				9F0132201D1830B000807F00 /* LaunchScreen.storyboard */,
+				9F0527171D19894A00F41CA6 /* Assets.xcassets */,
 				9F0132231D1830B000807F00 /* Info.plist */,
 				9F01321B1D1830B000807F00 /* BluMarketWebKit.xcdatamodeld */,
 				9F8D1B541D187E2000BE45DC /* BluMarketWebKit-Bridging-Header.h */,
@@ -243,8 +243,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F0527161D19869F00F41CA6 /* Main.storyboard in Resources */,
+				9F0527181D19894A00F41CA6 /* Assets.xcassets in Resources */,
 				9F0132221D1830B000807F00 /* LaunchScreen.storyboard in Resources */,
-				9F01321F1D1830B000807F00 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
