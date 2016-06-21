@@ -8,6 +8,9 @@
 
 import UIKit
 import CoreData
+import Fabric
+import Crashlytics
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
          registerForPushNotifications(application)
+        Fabric.with([Crashlytics.self])
         return true
     }
     
@@ -37,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
     }
     
     func applicationWillTerminate(application: UIApplication) {
@@ -127,7 +132,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         for i in 0..<deviceToken.length {
             tokenString += String(format: "%02.2hhx", arguments: [tokenChars[i]])
         }
-        
+        NSUserDefaults.standardUserDefaults().setObject(String(deviceToken), forKey: "deviceToken")
+        NSUserDefaults.standardUserDefaults().synchronize()
+
         print("Device Token:", tokenString)
     }
     
