@@ -14,6 +14,7 @@
 		9F0132381D1830B000807F00 /* BluMarketWebKitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0132371D1830B000807F00 /* BluMarketWebKitUITests.swift */; };
 		9F0527161D19869F00F41CA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F0527151D19869F00F41CA6 /* Main.storyboard */; };
 		9F0527181D19894A00F41CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F0527171D19894A00F41CA6 /* Assets.xcassets */; };
+		9F05271A1D198E3C00F41CA6 /* app icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F0527191D198E3C00F41CA6 /* app icon.png */; };
 		9F1F68CB1D185113007CCFE8 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1F68CA1D185113007CCFE8 /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		9F0132391D1830B000807F00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F0527151D19869F00F41CA6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		9F0527171D19894A00F41CA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9F0527191D198E3C00F41CA6 /* app icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app icon.png"; sourceTree = "<group>"; };
 		9F1F68CA1D185113007CCFE8 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +107,7 @@
 				9F0132201D1830B000807F00 /* LaunchScreen.storyboard */,
 				9F0527171D19894A00F41CA6 /* Assets.xcassets */,
 				9F0132231D1830B000807F00 /* Info.plist */,
+				9F0527191D198E3C00F41CA6 /* app icon.png */,
 				9F01321B1D1830B000807F00 /* BluMarketWebKit.xcdatamodeld */,
 			);
 			path = BluMarketWebKit;
@@ -236,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F0527161D19869F00F41CA6 /* Main.storyboard in Resources */,
+				9F05271A1D198E3C00F41CA6 /* app icon.png in Resources */,
 				9F0527181D19894A00F41CA6 /* Assets.xcassets in Resources */,
 				9F0132221D1830B000807F00 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -403,7 +407,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tom.BluMarketWebKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "BluMarketWebKit/BluMarketWebKit-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -418,7 +422,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tom.BluMarketWebKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "BluMarketWebKit/BluMarketWebKit-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

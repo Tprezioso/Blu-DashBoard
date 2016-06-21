@@ -25,7 +25,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
                 
                 self.previousReachabilityStatus = 2
                 
-                let host = "google.com"
+                let host = "8.8.8.8"
                 var context = SCNetworkReachabilityContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
                 context.info = UnsafeMutablePointer(Unmanaged.passUnretained(self).toOpaque())
                 
