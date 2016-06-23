@@ -10,16 +10,16 @@ import WebKit
 import SystemConfiguration
 
 class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHandler {
-    
+
     var webView: WKWebView!
     var webViewConfiguration: WKWebViewConfiguration!
     var contentController: WKUserContentController!
     var previousReachabilityStatus: UInt32!
     var reachabilityAlert: UIAlertController!
-            
+
     @IBOutlet var progressView: UIProgressView!
     @IBOutlet var loadingView: UIView!
-            
+
     override func loadView() {
         super.loadView()
         self.previousReachabilityStatus = 2
@@ -56,7 +56,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
         webView.addObserver(self, forKeyPath: "estimatedProgress", options: .New, context: nil)
         NSUserDefaults.standardUserDefaults().addObserver(self, forKeyPath: "deviceToken", options: .New, context: nil)
     }
-            
+
     func handleReachabilityChange(status: UInt32!) {
         if self.previousReachabilityStatus != 0 && status == 0 {
             self.reachabilityAlert = UIAlertController(title: "Internet connection lost", message: "Check your network connection and try again.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -65,16 +65,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
 
         if (self.previousReachabilityStatus == 0 && status != 0) {
             self.reachabilityAlert.dismissViewControllerAnimated(true, completion: nil)
-                    
             UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-                        
             self.loadingView.alpha = 1.0
                         
                 }, completion: {(completed: Bool) in self.webView.reload()})
         }
         self.previousReachabilityStatus = status
     }
-            
+
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
         if (message.name == "callbackHandler") {
             UIView.animateWithDuration(0.5, delay: 1.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
@@ -82,30 +80,30 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
              }, completion: nil)
         }
     }
-            
+
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String: AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if keyPath == "deviceToken" && webView.estimatedProgress >= 1 {
             self.sendDeviceToken(NSUserDefaults.standardUserDefaults().stringForKey("deviceToken")!)
         }
-                
+
         if keyPath == "estimatedProgress" {
             progressView.progress = Float(webView.estimatedProgress)
         }
     }
-            
+
     func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
         let deviceToken = NSUserDefaults.standardUserDefaults().stringForKey("deviceToken")
          if deviceToken != nil {
             self.sendDeviceToken(deviceToken!)
         }
     }
-            
+
     override func viewDidLoad() {
         super.viewDidLoad()
          let url = NSURL(string: "https://dashboard.theblumarket.com")
         webView.loadRequest(NSURLRequest(URL: url!))
     }
-            
+
     func sendDeviceToken(deviceToken: String!) {
         print(deviceToken)
         self.webView.evaluateJavaScript("var __device = {token: '" + deviceToken + "', os: 'iOS'};", completionHandler: { (object, error) -> Void in if (error == nil) {
