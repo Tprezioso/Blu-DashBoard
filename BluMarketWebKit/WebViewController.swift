@@ -67,7 +67,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
             self.reachabilityAlert.dismissViewControllerAnimated(true, completion: nil)
             UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
             self.loadingView.alpha = 1.0
-                        
                 }, completion: {(completed: Bool) in self.webView.reload()})
         }
         self.previousReachabilityStatus = status
