@@ -16,7 +16,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
     var contentController: WKUserContentController!
     var previousReachabilityStatus: UInt32!
     var reachabilityAlert: UIAlertController!
-
     @IBOutlet var progressView: UIProgressView!
     @IBOutlet var loadingView: UIView!
 
