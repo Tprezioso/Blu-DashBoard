@@ -45,6 +45,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
             self,
             name: "callbackHandler"
         )
+
         webViewConfiguration = WKWebViewConfiguration()
         webViewConfiguration.userContentController = contentController
         webView = WKWebView(frame: view.frame, configuration: webViewConfiguration)
