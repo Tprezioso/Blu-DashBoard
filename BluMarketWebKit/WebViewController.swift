@@ -55,6 +55,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
         view.sendSubviewToBack(webView)
         webView.addObserver(self, forKeyPath: "estimatedProgress", options: .New, context: nil)
         NSUserDefaults.standardUserDefaults().addObserver(self, forKeyPath: "deviceToken", options: .New, context: nil)
+        NSUserDefaults.init(suiteName: "group.io.tom.widget")
     }
 
     func handleReachabilityChange(status: UInt32!) {
@@ -79,9 +80,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
                  self.loadingView.alpha = 0.0
              }, completion: nil)
         } else if (event == "didLogin") {
-            NSUserDefaults.standardUserDefaults().setValue(message.body, forKey: "accessToken")
+            NSUserDefaults.init(suiteName: "group.io.tom.widget")!.setValue(message.body, forKey: "accessToken")
         } else if event == "didLogout" {
-            NSUserDefaults.standardUserDefaults().removeObjectForKey("accessToken")
+            NSUserDefaults.init(suiteName: "group.io.tom.widget")!.removeObjectForKey("accessToken")
         }
     }
 

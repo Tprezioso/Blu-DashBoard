@@ -11,7 +11,7 @@ import NotificationCenter
 import WebKit
 
 
-class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDelegate {
+class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDelegate, WKScriptMessageHandler {
 
     var contentController: WKUserContentController!
     var webViewConfiguration: WKWebViewConfiguration!
@@ -20,10 +20,37 @@ class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDele
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+
+    func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
+        let event = message.body["event"]as! String
+        print("\(event)................")
+        if (event == "pageDidLoad") {
+        } else if (event == "didLogin") {
+            NSUserDefaults.init(suiteName: "group.io.tom.widget")!.setValue(message.body, forKey: "accessToken")
+        } else if event == "didLogout" {
+            NSUserDefaults.init(suiteName: "group.io.tom.widget")!.removeObjectForKey("accessToken")
+        } else if event == "didCallApp" {
+            extensionContext?.openURL(NSURL(string: "blu://")!, completionHandler: nil)
+            
+        }
+    }
     
     override func loadView() {
         super.loadView()
-        view .addSubview(webViewWidget)
+        webViewWidget.alignmentRectForFrame(CGRectMake(0, 0, view.frame.height, view.frame.width))
+        view.addSubview(webViewWidget)
+
+        NSUserDefaults.standardUserDefaults().registerDefaults(["UserAgent": "BLU Widget"])
+        contentController = WKUserContentController()
+        let userScript = WKUserScript(
+            source: "",
+            injectionTime: WKUserScriptInjectionTime.AtDocumentEnd,
+            forMainFrameOnly: true
+        )
+        contentController.addUserScript(userScript)
+        contentController.addScriptMessageHandler(self,name: "callbackHandler")
+        webViewConfiguration = WKWebViewConfiguration()
+        webViewConfiguration.userContentController = contentController
         let accessToken = NSUserDefaults.standardUserDefaults().stringForKey("accessToken")
         var url = NSURL(string:"")
         if accessToken != nil {
@@ -33,27 +60,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDele
         }
         
         webViewWidget.loadRequest(NSURLRequest(URL: url!))
-
-        NSUserDefaults.standardUserDefaults().registerDefaults(["UserAgent": "BLU Widget"])
-        func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
-            let event = message.body["event"]as! String
-            if (event == "pageDidLoad") {
-            } else if (event == "didLogin") {
-                NSUserDefaults.standardUserDefaults().setValue(message.body, forKey: "accessToken")
-            } else if event == "didLogout" {
-                NSUserDefaults.standardUserDefaults().removeObjectForKey("accessToken")
-            }
-        }
-        contentController = WKUserContentController()
-        let userScript = WKUserScript(
-            source: "",
-            injectionTime: WKUserScriptInjectionTime.AtDocumentEnd,
-            forMainFrameOnly: true
-        )
-        contentController.addUserScript(userScript)
-//        contentController.addScriptMessageHandler(TodayViewContr,name: "callbackHandler")
-        webViewConfiguration = WKWebViewConfiguration()
-        webViewConfiguration.userContentController = contentController
 
 
     }
