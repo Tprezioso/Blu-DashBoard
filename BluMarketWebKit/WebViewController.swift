@@ -43,10 +43,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
             forMainFrameOnly: true
         )
         contentController.addUserScript(userScript)
-        contentController.addScriptMessageHandler(
-            self,
-            name: "callbackHandler"
-        )
+        contentController.addScriptMessageHandler(self,name: "callbackHandler")
 
 
         webViewConfiguration = WKWebViewConfiguration()
@@ -76,13 +73,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
     }
 
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
-        if (message.name == "pageDidLoad") {
+        let event = message.body["event"]as! String
+        if (event == "pageDidLoad") {
             UIView.animateWithDuration(0.5, delay: 1.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
                  self.loadingView.alpha = 0.0
              }, completion: nil)
-        } else if (message.name == "didLogin") {
+        } else if (event == "didLogin") {
             NSUserDefaults.standardUserDefaults().setValue(message.body, forKey: "accessToken")
-        } else if message.name == "didLogout" {
+        } else if event == "didLogout" {
             NSUserDefaults.standardUserDefaults().removeObjectForKey("accessToken")
         }
     }
