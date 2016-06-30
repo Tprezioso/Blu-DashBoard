@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>BLUMarketWebWidget.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>BluMarketWebKit.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -23,6 +28,11 @@
 			<true/>
 		</dict>
 		<key>9F0132321D1830B000807F00</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9F05166C1D257040005528E6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
