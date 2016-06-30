@@ -10,6 +10,7 @@ import UIKit
 import WebKit
 import SystemConfiguration
 
+
 class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHandler {
 
     var webView: WKWebView!
@@ -47,7 +48,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
             name: "callbackHandler"
         )
 
+
         webViewConfiguration = WKWebViewConfiguration()
+//        webViewConfiguration.processPool = webViewPool()
         webViewConfiguration.userContentController = contentController
         webView = WKWebView(frame: view.frame, configuration: webViewConfiguration)
         webView.scrollView.bounces = false
@@ -74,10 +77,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
     }
 
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
-        if (message.name == "callbackHandler") {
+        if (message.name == "pageDidLoad") {
             UIView.animateWithDuration(0.5, delay: 1.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
                  self.loadingView.alpha = 0.0
              }, completion: nil)
+        } else if (message.name == "didLogin") {
+            NSUserDefaults.standardUserDefaults().setValue(message.body, forKey: "accessToken")
+        } else if message.name == "didLogout" {
+            NSUserDefaults.standardUserDefaults().removeObjectForKey("accessToken")
         }
     }
 
@@ -115,4 +122,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
             }
         })
     }
+    
+//    func webViewPool() -> WKProcessPool  {
+//        let processPool = WKProcessPool()
+//        NSUserDefaults.standardUserDefaults().setValue(processPool, forKey: "pool")
+//        return processPool
+//    }
 }
