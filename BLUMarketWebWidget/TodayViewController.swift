@@ -15,10 +15,18 @@ class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDele
 
     var contentController: WKUserContentController!
     var webViewConfiguration: WKWebViewConfiguration!
-    @IBOutlet var webViewWidget: UIWebView!
+    @IBOutlet var webViewWidget: WKWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let accessToken = NSUserDefaults.standardUserDefaults().stringForKey("accessToken")
+        var url = NSURL(string:"")
+        if accessToken != nil {
+            url = NSURL(string: "https://dashboard.theblumarket.com?accessToken="+accessToken!)
+        } else {
+            url = NSURL(string: "https://dashboard.theblumarket.com/#/login")
+        }
+        webViewWidget.loadRequest(NSURLRequest(URL: url!))
     }
 
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
@@ -37,9 +45,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDele
     
     override func loadView() {
         super.loadView()
-        webViewWidget.alignmentRectForFrame(CGRectMake(0, 0, view.frame.height, view.frame.width))
-        view.addSubview(webViewWidget)
-
         NSUserDefaults.standardUserDefaults().registerDefaults(["UserAgent": "BLU Widget"])
         contentController = WKUserContentController()
         let userScript = WKUserScript(
@@ -51,17 +56,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDele
         contentController.addScriptMessageHandler(self,name: "callbackHandler")
         webViewConfiguration = WKWebViewConfiguration()
         webViewConfiguration.userContentController = contentController
-        let accessToken = NSUserDefaults.standardUserDefaults().stringForKey("accessToken")
-        var url = NSURL(string:"")
-        if accessToken != nil {
-            url = NSURL(string: "https://dashboard.theblumarket.com?accessToken="+accessToken!)
-        } else {
-            url = NSURL(string: "https://dashboard.theblumarket.com/#/login")
-        }
-        
-        webViewWidget.loadRequest(NSURLRequest(URL: url!))
-
-
+        webViewWidget = WKWebView(frame: view.frame, configuration: webViewConfiguration)
+        webViewWidget.scrollView.bounces = false
+        webViewWidget.navigationDelegate = self
+        view.addSubview(webViewWidget)
     }
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.

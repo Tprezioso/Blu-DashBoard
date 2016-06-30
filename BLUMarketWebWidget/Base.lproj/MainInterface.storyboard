@@ -16,18 +16,6 @@
                     <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4hM-rZ-Nwf">
-                                <rect key="frame" x="0.0" y="0.0" width="274" height="37"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
-                            </webView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="4hM-rZ-Nwf" secondAttribute="trailing" constant="46" id="fBV-KZ-y5E"/>
-                            <constraint firstItem="4hM-rZ-Nwf" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="jgG-i5-f66"/>
-                            <constraint firstItem="4hM-rZ-Nwf" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="pUW-jK-Z7a"/>
-                            <constraint firstItem="4hM-rZ-Nwf" firstAttribute="bottom" secondItem="FKl-LY-JtV" secondAttribute="top" id="sJR-pg-B6h"/>
-                        </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -35,9 +23,6 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="37"/>
-                    <connections>
-                        <outlet property="webViewWidget" destination="4hM-rZ-Nwf" id="kfd-5Q-pA3"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
