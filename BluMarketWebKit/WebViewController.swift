@@ -50,7 +50,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
 
 
         webViewConfiguration = WKWebViewConfiguration()
-//        webViewConfiguration.processPool = webViewPool()
         webViewConfiguration.userContentController = contentController
         webView = WKWebView(frame: view.frame, configuration: webViewConfiguration)
         webView.scrollView.bounces = false
@@ -122,10 +121,4 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
             }
         })
     }
-    
-//    func webViewPool() -> WKProcessPool  {
-//        let processPool = WKProcessPool()
-//        NSUserDefaults.standardUserDefaults().setValue(processPool, forKey: "pool")
-//        return processPool
-//    }
 }
