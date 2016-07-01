@@ -15,7 +15,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDele
     var contentController: WKUserContentController!
     var webViewConfiguration: WKWebViewConfiguration!
     @IBOutlet var webViewWidget: WKWebView!
-    @IBOutlet var spinner: UIActivityIndicatorView!
     var actInd: UIActivityIndicatorView!
     
     
@@ -43,7 +42,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDele
         }
 
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
-        spinner.startAnimating()
+        actInd.startAnimating()
 
         let event = message.body["event"]as! String
         if (event == "pageDidLoad") {
