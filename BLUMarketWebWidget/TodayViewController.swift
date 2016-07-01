@@ -39,7 +39,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDele
             NSUserDefaults.init(suiteName: "group.io.tom.widget")!.removeObjectForKey("accessToken")
         } else if event == "didCallApp" {
             extensionContext?.openURL(NSURL(string: "blu://")!, completionHandler: nil)
-            
         }
     }
     
@@ -52,9 +51,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDele
             injectionTime: WKUserScriptInjectionTime.AtDocumentEnd,
             forMainFrameOnly: true
         )
-        view.frame.size.height = CGFloat(136.0)
+        view.frame.size.height = CGFloat(165)
         view.backgroundColor = UIColor .clearColor()
-        self.preferredContentSize = CGSizeMake(0, 100)
+        self.preferredContentSize = CGSizeMake(0, 150)
         contentController.addUserScript(userScript)
         contentController.addScriptMessageHandler(self,name: "callbackHandler")
         webViewConfiguration = WKWebViewConfiguration()

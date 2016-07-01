@@ -16,6 +16,8 @@
 		9F0516731D257040005528E6 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0516721D257040005528E6 /* TodayViewController.swift */; };
 		9F0516761D257040005528E6 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F0516741D257040005528E6 /* MainInterface.storyboard */; };
 		9F05167A1D257040005528E6 /* BLUMarketWebWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9F05166D1D257040005528E6 /* BLUMarketWebWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9F0516811D25FB8A005528E6 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0516721D257040005528E6 /* TodayViewController.swift */; };
+		9F0516821D25FEFC005528E6 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1F68CA1D185113007CCFE8 /* WebViewController.swift */; };
 		9F0527161D19869F00F41CA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F0527151D19869F00F41CA6 /* Main.storyboard */; };
 		9F0527181D19894A00F41CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F0527171D19894A00F41CA6 /* Assets.xcassets */; };
 		9F05271A1D198E3C00F41CA6 /* app icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F0527191D198E3C00F41CA6 /* app icon.png */; };
@@ -444,6 +446,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F0516811D25FB8A005528E6 /* TodayViewController.swift in Sources */,
 				9F0132151D1830B000807F00 /* AppDelegate.swift in Sources */,
 				9F1F68CB1D185113007CCFE8 /* WebViewController.swift in Sources */,
 				9F01321D1D1830B000807F00 /* BluMarketWebKit.xcdatamodeld in Sources */,
@@ -471,6 +474,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F0516731D257040005528E6 /* TodayViewController.swift in Sources */,
+				9F0516821D25FEFC005528E6 /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
