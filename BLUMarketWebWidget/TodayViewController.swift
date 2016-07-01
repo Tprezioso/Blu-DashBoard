@@ -10,7 +10,6 @@ import UIKit
 import NotificationCenter
 import WebKit
 
-
 class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDelegate, WKScriptMessageHandler {
 
     var contentController: WKUserContentController!
@@ -52,12 +51,13 @@ class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDele
         )
         view.frame.size.height = CGFloat(165)
         view.backgroundColor = UIColor .clearColor()
-        self.preferredContentSize = CGSizeMake(0, 150)
+        self.preferredContentSize = CGSizeMake(0, 130)
         contentController.addUserScript(userScript)
         contentController.addScriptMessageHandler(self,name: "callbackHandler")
         webViewConfiguration = WKWebViewConfiguration()
         webViewConfiguration.userContentController = contentController
         webViewWidget = WKWebView(frame: view.frame, configuration: webViewConfiguration)
+        webViewWidget.frame.size.width = view.frame.size.width  * 0.75
         webViewWidget.backgroundColor = UIColor.clearColor()
         webViewWidget.scrollView.bounces = false
         webViewWidget.navigationDelegate = self
