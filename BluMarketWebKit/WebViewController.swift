@@ -44,8 +44,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
         )
         contentController.addUserScript(userScript)
         contentController.addScriptMessageHandler(self,name: "callbackHandler")
-
-
         webViewConfiguration = WKWebViewConfiguration()
         webViewConfiguration.userContentController = contentController
         webView = WKWebView(frame: view.frame, configuration: webViewConfiguration)
