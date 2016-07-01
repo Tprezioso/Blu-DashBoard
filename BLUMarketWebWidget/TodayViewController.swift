@@ -29,7 +29,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDele
         actInd.hidesWhenStopped = true
         actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.White
         view.addSubview(actInd)
-        let accessToken = NSUserDefaults.init(suiteName: "group.io.tom.widget")!.stringForKey("accessToken")
+        let accessToken = NSUserDefaults.init(suiteName:"group.io.tom.widget")!.stringForKey("accessToken")
         var url = NSURL(string:"")
         dispatch_async(dispatch_get_main_queue(), {
             if accessToken != nil {
