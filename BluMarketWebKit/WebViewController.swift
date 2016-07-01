@@ -75,12 +75,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
 
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
         let event = message.body["event"]as! String
+        print(message.body)
         if (event == "pageDidLoad") {
             UIView.animateWithDuration(0.5, delay: 1.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
                  self.loadingView.alpha = 0.0
              }, completion: nil)
         } else if (event == "didLogin") {
-            NSUserDefaults.init(suiteName: "group.io.tom.widget")!.setValue(message.body, forKey: "accessToken")
+            NSUserDefaults.init(suiteName: "group.io.tom.widget")!.setValue(message.body["value"] as! String, forKey: "accessToken")
         } else if event == "didLogout" {
             NSUserDefaults.init(suiteName: "group.io.tom.widget")!.removeObjectForKey("accessToken")
         }

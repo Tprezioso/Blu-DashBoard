@@ -19,10 +19,11 @@ class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let accessToken = NSUserDefaults.standardUserDefaults().stringForKey("accessToken")
+        let accessToken = NSUserDefaults.init(suiteName: "group.io.tom.widget")!.stringForKey("accessToken")
+        print(accessToken)
         var url = NSURL(string:"")
         if accessToken != nil {
-            url = NSURL(string: "https://dashboard.theblumarket.com?accessToken="+accessToken!)
+            url = NSURL(string: "https://dashboard.theblumarket.com/#/login?accessToken="+accessToken!)
         } else {
             url = NSURL(string: "https://dashboard.theblumarket.com/#/login")
         }
@@ -52,11 +53,18 @@ class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDele
             injectionTime: WKUserScriptInjectionTime.AtDocumentEnd,
             forMainFrameOnly: true
         )
+        let screenScale = UIScreen.mainScreen().scale as CGFloat
+        
+        view.frame.size.height = CGFloat(136.0) // screenScale
+        view.backgroundColor = UIColor .clearColor()
+        self.preferredContentSize = CGSizeMake(0, 100)
+//        webViewWidget.frame.size.height = CGFloat(136.0) //* screenScale
         contentController.addUserScript(userScript)
         contentController.addScriptMessageHandler(self,name: "callbackHandler")
         webViewConfiguration = WKWebViewConfiguration()
         webViewConfiguration.userContentController = contentController
         webViewWidget = WKWebView(frame: view.frame, configuration: webViewConfiguration)
+        webViewWidget.backgroundColor = UIColor.clearColor()
         webViewWidget.scrollView.bounces = false
         webViewWidget.navigationDelegate = self
         view.addSubview(webViewWidget)
