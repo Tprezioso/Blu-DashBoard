@@ -20,7 +20,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDele
     override func viewDidLoad() {
         super.viewDidLoad()
         let accessToken = NSUserDefaults.init(suiteName: "group.io.tom.widget")!.stringForKey("accessToken")
-        print(accessToken)
         var url = NSURL(string:"")
         if accessToken != nil {
             url = NSURL(string: "https://dashboard.theblumarket.com/#/login?accessToken="+accessToken!)
