@@ -32,7 +32,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDele
 
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
         let event = message.body["event"]as! String
-        print("\(event)................")
         if (event == "pageDidLoad") {
         } else if (event == "didLogin") {
             NSUserDefaults.init(suiteName: "group.io.tom.widget")!.setValue(message.body, forKey: "accessToken")
@@ -53,12 +52,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDele
             injectionTime: WKUserScriptInjectionTime.AtDocumentEnd,
             forMainFrameOnly: true
         )
-        let screenScale = UIScreen.mainScreen().scale as CGFloat
-        
-        view.frame.size.height = CGFloat(136.0) // screenScale
+        view.frame.size.height = CGFloat(136.0)
         view.backgroundColor = UIColor .clearColor()
         self.preferredContentSize = CGSizeMake(0, 100)
-//        webViewWidget.frame.size.height = CGFloat(136.0) //* screenScale
         contentController.addUserScript(userScript)
         contentController.addScriptMessageHandler(self,name: "callbackHandler")
         webViewConfiguration = WKWebViewConfiguration()
@@ -69,6 +65,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDele
         webViewWidget.navigationDelegate = self
         view.addSubview(webViewWidget)
     }
+
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
         // If an error is encountered, use NCUpdateResult.Failed
