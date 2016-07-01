@@ -1,1 +1,10 @@
+PODS:
+  - KRProgressHUD (1.4.2)
+
+DEPENDENCIES:
+  - KRProgressHUD (~> 1.4)
+
+SPEC CHECKSUMS:
+  KRProgressHUD: acf30dc6692a6eba2b01104149874919897cc2bc
+
 COCOAPODS: 0.38.2
