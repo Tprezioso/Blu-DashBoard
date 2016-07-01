@@ -88,7 +88,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
         if keyPath == "deviceToken" && webView.estimatedProgress >= 1 {
             self.sendDeviceToken(NSUserDefaults.standardUserDefaults().stringForKey("deviceToken")!)
         }
-
         if keyPath == "estimatedProgress" {
             progressView.progress = Float(webView.estimatedProgress)
         }
