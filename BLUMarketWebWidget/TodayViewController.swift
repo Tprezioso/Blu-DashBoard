@@ -36,7 +36,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDele
                 url = NSURL(string: "https://dashboard.theblumarket.com/#/login")
             }
             self.webViewWidget.loadRequest(NSURLRequest(URL: url!))
-
         })
     }
 
