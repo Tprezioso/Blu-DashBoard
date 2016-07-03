@@ -17,7 +17,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDele
     @IBOutlet var webViewWidget: WKWebView!
     var actInd: UIActivityIndicatorView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         actInd = UIActivityIndicatorView(frame: CGRectMake(0,0, 50, 50)) as UIActivityIndicatorView
@@ -39,18 +38,17 @@ class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDele
             self.webViewWidget.loadRequest(NSURLRequest(URL: url!))
 
         })
-        }
+    }
 
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
         actInd.startAnimating()
-
         let event = message.body["event"]as! String
-        if (event == "pageDidLoad") {
+        if event == "pageDidLoad" {
             actInd.stopAnimating()
             UIView.animateWithDuration(0.5, animations: { 
                 self.webViewWidget.alpha = 1
             })
-        } else if (event == "didLogin") {
+        } else if event == "didLogin" {
             NSUserDefaults.init(suiteName: "group.io.tom.widget")!.setValue(message.body, forKey: "accessToken")
         } else if event == "didLogout" {
       NSUserDefaults.init(suiteName: "group.io.tom.widget")!.removeObjectForKey("accessToken")
@@ -78,18 +76,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, WKNavigationDele
         webViewWidget = WKWebView(frame: view.frame, configuration: webViewConfiguration)
         webViewWidget.frame.size.width = view.frame.size.width  * 0.75
         webViewWidget.frame.size.height = view.frame.size.height
-        
         webViewWidget.backgroundColor = UIColor.clearColor()
         webViewWidget.scrollView.bounces = false
         webViewWidget.navigationDelegate = self
         view.addSubview(webViewWidget)
-    }
-
-    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
-        // Perform any setup necessary in order to update the view.
-        // If an error is encountered, use NCUpdateResult.Failed
-        // If there's no update required, use NCUpdateResult.NoData
-        // If there's an update, use NCUpdateResult.NewData
-        completionHandler(NCUpdateResult.NewData)
     }
 }
